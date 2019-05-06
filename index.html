@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Train Scheduler</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    </head>
+    <body>
+        <article class="container col-md-8">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Train Scheduler</h1>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Schedule</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>Frequency</th>
+                                <th>Next Arrival</th>
+                                <th>Minutes Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Add Train</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="trainName">Train Name</label>
+                            <input type="text" class="form-control" id="trainName">
+                            <label for="destination">Destination</label>
+                            <input type="text" class="form-control" id="destination">
+                            <label for="time">First Train (HH:MM)</label>
+                            <input type="text" class="form-control" id="time">
+                            <label for="frequency">Frequency (min)</label>
+                            <input type="text" class="form-control" id="frequency">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </article>
+        
+        <script src="./assets/javascript/train.js"></script>
+    </body>
+</html>
