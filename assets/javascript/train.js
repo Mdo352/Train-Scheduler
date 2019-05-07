@@ -8,10 +8,11 @@ $( document ).ready(function() {
         storageBucket: "train-scheduler-a3af6.appspot.com",
         messagingSenderId: "407987591325",
         appId: "1:407987591325:web:29d038bb3df748d7"
-      };
+    };
     
     firebase.initializeApp(firebaseConfig);
 
+    var database = firebase.database();
     var name = "";
     var city = "";
     var time = 0;
@@ -19,7 +20,25 @@ $( document ).ready(function() {
 
     $(".btn").on("click", function(){
         event.preventDefault();
-    })
+        name = $("#trainName").val().trim();
+        city = $("#destination").val().trim();
+        time = $("#time").val().trim();
+        freq = $("#frequency").val().trim();
 
+        // console.log(name, city, time, freq);
+        database.ref().set({
+            name:name,
+            city:city,
+            time:time,
+            freq:freq
+        });
+    });
+
+    database.ref().on("value", function(snapshot){
+        console.log(snapshot.val());
+        console.log(snapshot.val().name);
+    }, function(errorObject){
+        console.log("Errors handled: " + errorObject.code);
+    });
 
 });
