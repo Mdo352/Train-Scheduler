@@ -35,29 +35,27 @@ $( document ).ready(function() {
 
     database.ref().on("child_added", function(snapshot){
         var sv = snapshot.val();
-
-        // Store everything into a variable.
         var trainName = sv.name;
         var trainCity = sv.city;
         var trainTime = sv.time;
         var trainFreq = sv.freq;
 
-        console.log(trainName);
-        console.log(trainCity);
-        console.log(trainTime);
-        console.log(trainFreq);
+        var currentTime = moment();
+        var convertFirstTime = moment(trainTime, "HH:mm").subtract(1,"years");
+        var difference = moment().diff(moment(convertFirstTime), "minutes");
+        var timeRemainder = difference % trainFreq
+        var minutesAway = trainFreq - timeRemainder;
+        var nextTrain = moment().add(minutesAway, "minutes");
 
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
             $("<td>").text(trainCity),
             $("<td>").text(trainFreq),
-            $("<td>").text("moment.js"),
-            $("<td>").text("moment.js")
+            $("<td>").text(nextTrain),
+            $("<td>").text(minutesAway)
         );
         
-        // Append the new row to the table
         $("#trainSchedule > tbody").append(newRow);
-
 
     }, function(errorObject){
         console.log("Errors handled: " + errorObject.code);
