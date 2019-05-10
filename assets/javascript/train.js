@@ -25,8 +25,7 @@ $( document ).ready(function() {
         time = $("#time").val().trim();
         freq = $("#frequency").val().trim();
 
-        // console.log(name, city, time, freq);
-        database.ref().set({
+        database.ref().push({
             name:name,
             city:city,
             time:time,
@@ -34,9 +33,14 @@ $( document ).ready(function() {
         });
     });
 
-    database.ref().on("value", function(snapshot){
-        console.log(snapshot.val());
-        console.log(snapshot.val().name);
+    database.ref().on("child_added", function(snapshot){
+        var sv = snapshot.val();
+
+        // console.log(sv.name);
+        // console.log(sv.city);
+        // console.log(sv.time);
+        console.log(sv.freq);
+
     }, function(errorObject){
         console.log("Errors handled: " + errorObject.code);
     });

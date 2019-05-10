@@ -5,3 +5,7 @@ h1{
 .card{
     margin-bottom: 20px;
 }
+
+.jumbotron{
+    /* background-image: url("../images/train-track.jpg"); */
+}
