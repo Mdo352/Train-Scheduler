@@ -36,10 +36,28 @@ $( document ).ready(function() {
     database.ref().on("child_added", function(snapshot){
         var sv = snapshot.val();
 
-        // console.log(sv.name);
-        // console.log(sv.city);
-        // console.log(sv.time);
-        console.log(sv.freq);
+        // Store everything into a variable.
+        var trainName = sv.name;
+        var trainCity = sv.city;
+        var trainTime = sv.time;
+        var trainFreq = sv.freq;
+
+        console.log(trainName);
+        console.log(trainCity);
+        console.log(trainTime);
+        console.log(trainFreq);
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(trainName),
+            $("<td>").text(trainCity),
+            $("<td>").text(trainFreq),
+            $("<td>").text("moment.js"),
+            $("<td>").text("moment.js")
+        );
+        
+        // Append the new row to the table
+        $("#trainSchedule > tbody").append(newRow);
+
 
     }, function(errorObject){
         console.log("Errors handled: " + errorObject.code);
