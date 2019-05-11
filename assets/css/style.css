@@ -7,5 +7,12 @@ h1{
 }
 
 .jumbotron{
-    /* background-image: url("../images/train-track.jpg"); */
+    background-image: url("../images/tracks.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size: cover;
+    color: white;
+
 }

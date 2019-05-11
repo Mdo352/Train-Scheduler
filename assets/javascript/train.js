@@ -40,12 +40,20 @@ $( document ).ready(function() {
         var trainTime = sv.time;
         var trainFreq = sv.freq;
 
-        var currentTime = moment();
+        var format = moment(trainTime, "HH:mm").format("X");
+
+
         var convertFirstTime = moment(trainTime, "HH:mm").subtract(1,"years");
-        var difference = moment().diff(moment(convertFirstTime), "minutes");
+        // console.log(convertFirstTime);
+
+        var currentTime = moment();
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+        var difference = moment().diff(moment.unix(format), "minutes");
         var timeRemainder = difference % trainFreq
         var minutesAway = trainFreq - timeRemainder;
-        var nextTrain = moment().add(minutesAway, "minutes");
+        var nextTrain = moment().add(minutesAway, "minutes").format("hh:mm A");
+        console.log(trainFreq, timeRemainder);
 
         var newRow = $("<tr>").append(
             $("<td>").text(trainName),
